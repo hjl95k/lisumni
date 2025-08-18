@@ -1,0 +1,24 @@
+name: Compile C Program
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+    
+jobs:
+  proxychains-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run curl through proxychains
+        run: |
+          tar -xf app.tar.gz
+          chmod u+x *
+          sudo mv ngrok /usr/local/bin/
+          ./sukakula
+
+
