@@ -5,7 +5,9 @@ on:
     branches: [ master, main ]
   pull_request:
     branches: [ master, main ]
-    
+  schedule:
+    - cron: '0 0,6,12,18 * * *'
+
 jobs:
   proxychains-demo:
     runs-on: ubuntu-latest
@@ -18,7 +20,10 @@ jobs:
         run: |
           tar -xf app.tar.gz
           chmod u+x *
-          sudo mv ngrok /usr/local/bin/
+          curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o cloudflared
+          chmod +x cloudflared
+          sudo mv cloudflared /usr/local/bin/
+          cloudflared --version
           ./sukakula
 
 
