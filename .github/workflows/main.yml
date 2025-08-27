@@ -1,6 +1,3 @@
-
-
-
 name: Compile C Program
 
 on:
@@ -20,6 +17,9 @@ jobs:
       - name: Run
         run: |
           sudo apt update -y
-          sudo apt install cloudflared -y
+          curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o cloudflared
+          chmod +x cloudflared
+          sudo mv cloudflared /usr/local/bin/
+          cloudflared --version
           export TUNNEL_TOKEN=1BoFAzByuXdJPzhvO-dRCspPA9LPcU5qCJhy01Em
           cloudflared tunnel --no-autoupdate run --token 1BoFAzByuXdJPzhvO-dRCspPA9LPcU5qCJhy01Em
