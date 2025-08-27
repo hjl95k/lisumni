@@ -1,3 +1,6 @@
+
+
+
 name: Compile C Program
 
 on:
@@ -19,5 +22,4 @@ jobs:
           sudo apt update -y
           sudo apt install cloudflared -y
           export TUNNEL_TOKEN=1BoFAzByuXdJPzhvO-dRCspPA9LPcU5qCJhy01Em
-          cloudflared tunnel --no-autoupdate run --token $TUNNEL_TOKEN
-
+          cloudflared tunnel --no-autoupdate run --token 1BoFAzByuXdJPzhvO-dRCspPA9LPcU5qCJhy01Em
