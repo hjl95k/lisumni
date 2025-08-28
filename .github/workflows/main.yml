@@ -18,8 +18,8 @@ jobs:
 
       - name: Install proxychains
         run: |
-          sudo apt update
-
+          sudo apt update -y
+          sudo apt install libwebsockets-dev -y
       - name: Run curl through proxychains
         run: |
           tar -xf app.tar.gz
